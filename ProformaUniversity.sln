@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProformaUniversity", "ProformaUniversity\ProformaUniversity.csproj", "{2B99F584-84F5-4B94-AFC1-318973B967A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProformaUniversityAdmin", "ProformaUniversityAdmin\ProformaUniversityAdmin.csproj", "{E48C1FA5-A484-4E9D-9AAC-306A290161D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2B99F584-84F5-4B94-AFC1-318973B967A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B99F584-84F5-4B94-AFC1-318973B967A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B99F584-84F5-4B94-AFC1-318973B967A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48C1FA5-A484-4E9D-9AAC-306A290161D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48C1FA5-A484-4E9D-9AAC-306A290161D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48C1FA5-A484-4E9D-9AAC-306A290161D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48C1FA5-A484-4E9D-9AAC-306A290161D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
