@@ -21,19 +21,29 @@ namespace ProformaUniversityAdmin
             Console.WriteLine("When does the class start? yyyy-mm-dd");
             var startTime = Console.ReadLine();
 
-            var input = new Courses {
+            var newCourse = new Courses {
                 CourseName = courseName,
                 Level = courseLevel,
                 Number = courseNumber,
                 Room = roomNumber,
                 StartTime = startTime
             };
-            return input;
+            return newCourse;
         }
 
-        //public static Professors CreateProfessors()
-        //{
+        public static Professor CreateProfessors()
+        {
+            Console.WriteLine("What is the professor's title?");
+            var profTitle = Console.ReadLine();
+            Console.WriteLine("What is the professor's full name?");
+            var profName = Console.ReadLine();
 
-        //}
+            var newProf = new Professor
+            {
+                Name = profName,
+                Title = profTitle
+            };
+            return newProf;
+        }
     }
 }

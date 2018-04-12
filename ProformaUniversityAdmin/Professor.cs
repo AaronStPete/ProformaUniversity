@@ -21,6 +21,8 @@ namespace ProformaUniversityAdmin
 
     public Professors(SqlDataReader reader)
     {
-
+        ID = (int)reader["ID"];
+        Name = reader["Name"].ToString();
+        Title = reader["Title"].ToString();
     }
 }
