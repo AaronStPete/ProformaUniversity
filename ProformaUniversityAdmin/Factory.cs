@@ -82,6 +82,23 @@ namespace ProformaUniversityAdmin
                 var _professor = new Professor(reader);
                 Console.WriteLine($"Professor #{_professor.ID} is a {_professor.Title} named {_professor.Name}");
             }
+            reader.Close();
+            return _rv;
+        }
+
+        public static List<Courses> GetCourses(SqlConnection conn)
+        {
+            var _select = "SELECT [ID], [NUMBER], [LEVEL], [Name], [Room], [StartTime] " +
+                " FROM [Courses]";
+            var query = new SqlCommand(_select, conn);
+            var reader = query.ExecuteReader();
+            var _rv = new List<Courses>();
+            while (reader.Read())
+            {
+                var _course = new Courses(reader);
+                Console.WriteLine($"Course ID#{_course.ID} Number{_course.Number} Level{_course.Level} is named {_course.CourseName} is located in {_course.Room} on {_course.StartTime}");
+            }
+            reader.Close();
             return _rv;
         }
     }

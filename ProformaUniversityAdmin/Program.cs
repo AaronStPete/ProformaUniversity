@@ -63,7 +63,7 @@ namespace ProformaUniversityAdmin
                     {
                         /////INSERT COURSE LIST AND PROFESSOR LIST
                         Factory.GetProfessors(conn);
-                        //courselist
+                        Factory.GetCourses(conn);
                     }
                     //view who is enrolled in class
                     //view all classes: who is teaching, who is enrolled
