@@ -47,6 +47,55 @@ namespace ProformaUniversityAdmin
             return newProf;
         }
 
+        public static Students CreateStudent()
+        {
+            Console.WriteLine("What is the student's full name?");
+            var studentFullName = Console.ReadLine();
+            Console.WriteLine("What is the student's email?");
+            var studentEmail = Console.ReadLine();
+            Console.WriteLine("What is the student's phone number?");
+            var studentPhoneNumber = Console.ReadLine();
+            Console.WriteLine("What is the student's major?");
+            var studentMajor = Console.ReadLine();
+
+            var newStudent = new Students
+            {
+                FullName = studentFullName,
+                Email = studentEmail,
+                PhoneNumber = studentPhoneNumber,
+                Major = studentMajor
+            };
+            return newStudent;
+        }
+
+        public static void InsertStudent(SqlConnection conn, Students newStudent)
+        {
+            var _insert = "INSERT INTO Students (FullName, Email, PhoneNumber, Major)" + "Values (@FullName, @Email, @PhoneNumber, @Major)";
+            var cmd = new SqlCommand(_insert, conn);
+
+            cmd.Parameters.AddWithValue("FullName", newStudent.FullName);
+            cmd.Parameters.AddWithValue("Email", newStudent.Email);
+            cmd.Parameters.AddWithValue("PhoneNumber", newStudent.PhoneNumber);
+            cmd.Parameters.AddWithValue("Major", newStudent.Major);
+            cmd.ExecuteScalar();
+        }
+
+        public static void EnrollStudent(SqlConnection conn, Students student, Courses course)
+        {
+            Console.WriteLine("What is the full name of the student that would like to enroll?");
+            var studentFullName = Console.ReadLine();
+            Console.WriteLine("What is the course number that the student would like to enroll in?");
+            var courseNumber = Console.ReadLine();
+
+            ///HOW TO CONNECT STUDENTFULLNAME AND COURSENUMBER TO FK-STUDENTIDS AND FK-COURSEIDS RESPECTIVELY?
+
+            var _insert = "INSERT INTO StudentEnrollment (FK-StudentIDs, FK-CourseIDs) VALUES (@FK-StudentIDs, @FK-CourseIDs) JOIN Students ON StudentEnrollment.FK-StudentIDs = Students.ID; JOIN Courses ON StudentEnrollment.FK-CourseIDs = Courses.ID;";
+            var cmd = new SqlCommand(_insert, conn);
+
+            cmd.Parameters.AddWithValue("FK-StudentIDs", student.ID);
+            cmd.Parameters.AddWithValue("FK-CourseIDs", course.ID);
+        }
+
         public static void InsertProfessor(SqlConnection conn, Professor newProf)
         {
             var _insert = "INSERT INTO Professors (Name, Title)" + "Values (@Name, @Title)";
