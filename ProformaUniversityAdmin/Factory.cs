@@ -69,5 +69,20 @@ namespace ProformaUniversityAdmin
             cmd.Parameters.AddWithValue("StartTime", newCourse.StartTime);
             cmd.ExecuteScalar();
         }
+
+        public static List<Professor> GetProfessors(SqlConnection conn)
+        {
+            var _select = "SELECT [ID], [Name], [Title] " +
+                " FROM [Professors]";
+            var query = new SqlCommand(_select, conn);
+            var reader = query.ExecuteReader();
+            var _rv = new List<Professor>();
+            while (reader.Read())
+            {
+                var _professor = new Professor(reader);
+                Console.WriteLine($"Professor #{_professor.ID} is a {_professor.Title} named {_professor.Name}");
+            }
+            return _rv;
+        }
     }
 }

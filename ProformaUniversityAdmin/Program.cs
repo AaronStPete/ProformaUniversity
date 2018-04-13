@@ -24,7 +24,7 @@ namespace ProformaUniversityAdmin
                 {
                     // menu
                     Console.WriteLine("Welcome to the Proforma University admin menu. \n " +
-                        "Would you like to add a (course) or (professor) or would you like to (exit)?");
+                        "Would you like to add a (course) or (professor), (view) courses and professors, or would you like to (exit)?");
                     var menuInput = Console.ReadLine().ToLower();
                     if (menuInput == "class" || menuInput == "course")
                     {
@@ -37,9 +37,7 @@ namespace ProformaUniversityAdmin
                             Console.WriteLine("Would you like to add another course? (y) or (n)");
                             var input = Console.ReadLine();
                             if (input == "n" || input == "no")
-                            {
-                                addingClasses = false;
-                            }
+                            { addingClasses = false; }
                         }
                     }
                     else if (menuInput == "professor" || menuInput == "prof")
@@ -54,16 +52,19 @@ namespace ProformaUniversityAdmin
                             Console.WriteLine("Would you like to add another professor? (y) or (n)");
                             var input = Console.ReadLine();
                             if (input == "n" || input == "no")
-                            {
-                                addingProf = false;
-                            }
+                            { addingProf = false; }
                         }
                     }
                     else if (menuInput == "exit" || menuInput == "close")
-                    {
+                    { ///Exit Menu
                         adminMenuOpen = false;
+                    } 
+                    else if (menuInput == "view")
+                    {
+                        /////INSERT COURSE LIST AND PROFESSOR LIST
+                        Factory.GetProfessors(conn);
+                        //courselist
                     }
-
                     //view who is enrolled in class
                     //view all classes: who is teaching, who is enrolled
                 }
