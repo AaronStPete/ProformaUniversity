@@ -80,7 +80,7 @@ namespace ProformaUniversityAdmin
             cmd.ExecuteScalar();
         }
 
-        public static void EnrollStudent(SqlConnection conn, Students student, Courses course)
+        public static void EnrollStudent(SqlConnection conn)
         {
             Console.WriteLine("What is the full name of the student that would like to enroll?");
             var studentFullName = Console.ReadLine();
@@ -88,12 +88,27 @@ namespace ProformaUniversityAdmin
             var courseNumber = Console.ReadLine();
 
             ///HOW TO CONNECT STUDENTFULLNAME AND COURSENUMBER TO FK-STUDENTIDS AND FK-COURSEIDS RESPECTIVELY?
+            /// query: get student.id from db students
+            var _student = "SELECT TOP(1) [ID] FROM [Students] WHERE [FullName] = @Name";
+            var stuCMD = new SqlCommand(_student, conn);
+            stuCMD.Parameters.AddWithValue("Name", studentFullName);
+            var studentReader = stuCMD.ExecuteReader();
+            var studentId = 0;
+            while (studentReader.Read())
+            {
+                studentId = (int)studentReader["ID"];
+            }
+            Console.WriteLine($"{studentId}");
 
-            var _insert = "INSERT INTO StudentEnrollment (FK-StudentIDs, FK-CourseIDs) VALUES (@FK-StudentIDs, @FK-CourseIDs) JOIN Students ON StudentEnrollment.FK-StudentIDs = Students.ID; JOIN Courses ON StudentEnrollment.FK-CourseIDs = Courses.ID;";
+            /// query: get course.id from db courses
+
+            /// then insert in studentenrollment table
+            var _insert = "INSERT INTO StudentEnrollment (FK-StudentIDs, FK-CourseIDs) " +
+                "VALUES (@FK-StudentIDs, @FK-CourseIDs) ";
             var cmd = new SqlCommand(_insert, conn);
 
-            cmd.Parameters.AddWithValue("FK-StudentIDs", student.ID);
-            cmd.Parameters.AddWithValue("FK-CourseIDs", course.ID);
+           // cmd.Parameters.AddWithValue("FK-StudentIDs", student.ID);
+           // cmd.Parameters.AddWithValue("FK-CourseIDs", course.ID);
         }
 
         public static void InsertProfessor(SqlConnection conn, Professor newProf)

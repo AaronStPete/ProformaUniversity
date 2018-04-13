@@ -66,6 +66,10 @@ namespace ProformaUniversityAdmin
                         Factory.GetCourses(conn);
                     }
                     //view who is enrolled in class
+                    else if (menuInput == "enroll")
+                    {
+                        Factory.EnrollStudent(conn);
+                    }
                     //view all classes: who is teaching, who is enrolled
                 }
             }
