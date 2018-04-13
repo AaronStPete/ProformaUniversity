@@ -33,6 +33,7 @@ namespace ProformaUniversityAdmin
                         while (addingClasses == true)
                         {
                             var newCourse = Factory.CreateCourse();
+                            Factory.InsertCourse(conn, newCourse);
                             Console.WriteLine("Would you like to add another course? (y) or (n)");
                             var input = Console.ReadLine();
                             if (input == "n" || input == "no")
