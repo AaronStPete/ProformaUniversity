@@ -12,17 +12,17 @@ namespace ProformaUniversityAdmin
         public int ID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
-    }
 
-    public Professor()
-    {
+        public Professor()
+        {
 
-    }
+        }
 
-    public Professor(SqlDataReader reader)
-    {
-        ID = (int)reader["ID"];
-        Name = reader["Name"].ToString();
-        Title = reader["Title"].ToString();
+        public Professor(SqlDataReader reader)
+        {
+            ID = (int)reader["ID"];
+            Name = reader["Name"].ToString();
+            Title = reader["Title"].ToString();
+        }
     }
 }
